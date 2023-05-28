@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request
 from joblib import load
+from flask_cors import CORS
 
 model = load("../models/nutrition_model_decisiontree_gridsearch.pkl")
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/predict', methods=['POST'])
 def predict():
